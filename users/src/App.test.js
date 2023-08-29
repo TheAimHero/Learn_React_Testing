@@ -1,4 +1,4 @@
-import { screen, render, waitFor } from '@testing-library/react';
+import { screen, render } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import App from './App';
@@ -21,16 +21,14 @@ test('the entire component', async () => {
 
   user.keyboard('{Enter}');
 
-  await waitFor(() => {
-    const items = screen.getAllByRole('listitem');
+  const items = await screen.findAllByRole('listitem');
 
-    expect(items).toHaveLength(1);
-    items.forEach((item, index) => {
-      const [name, email] = item.textContent
-        .split('-->')
-        .map((item) => item.trim());
-      expect(name).toBe('v');
-      expect(email).toBe('v@g.com');
-    });
+  expect(items).toHaveLength(1);
+  items.forEach((item, index) => {
+    const [name, email] = item.textContent
+      .split('-->')
+      .map((item) => item.trim());
+    expect(name).toBe('v');
+    expect(email).toBe('v@g.com');
   });
 });
