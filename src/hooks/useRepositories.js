@@ -3,10 +3,7 @@ import useSWR from 'swr';
 
 async function repositoriesFetcher([url, searchQuery]) {
   const res = await axios.get(url, {
-    params: {
-      q: searchQuery || '',
-      per_page: 10,
-    },
+    params: { q: searchQuery || '', per_page: 10 },
   });
 
   return res.data.items;
@@ -18,9 +15,5 @@ export default function useRepositories(searchQuery) {
     repositoriesFetcher
   );
 
-  return {
-    data,
-    isLoading,
-    error,
-  };
+  return { data, isLoading, error };
 }

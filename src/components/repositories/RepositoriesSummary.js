@@ -8,7 +8,7 @@ function RepositoriesSummary({ repository }) {
       <div>
         <StarIcon aria-label='stars' size={16} /> {stargazers_count}
       </div>
-      {language && <div>Language Used : {language}</div>}
+      {language && <div>{language}</div>}
       <div>{open_issues} issues need help</div>
       <div>{forks} Forks</div>
     </div>
